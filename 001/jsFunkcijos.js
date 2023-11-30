@@ -85,7 +85,7 @@ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-let masyvoIlgis = getRandomNumber(10,20)-1;
+let masyvoIlgis = getRandomNumber(10,20) - 1;
 
 let dynamicArr = getRandomArr(0, 10, masyvoIlgis);
 dynamicArr.push(0)
