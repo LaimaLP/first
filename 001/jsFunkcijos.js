@@ -1,19 +1,18 @@
 //1 Parašykite funkciją, kurios argumentas būtų tekstas, kuris yra atspausdinamas su console.log;
 
 function first(text) {
-  console.log(text);
+  return text.toString();
 }
-
-first("laaaabas");
+console.log(first("laaaabas"));
 
 // 2 Parašykite funkciją su dviem argumentais, pirmas argumentas tekstas, įterpiamas atspausdinamas su console.log,
 //o antrasis kiek kartų spausdinimas atliekamas. Rašydami šią funkciją remkitės pirmame uždavinyje parašytą funkciją;
 
 const number = 5;
 function second(text2, number) {
-  console.log(text2.repeat(number));
+  return text2.repeat(number);
 }
-second("labas ", 5);
+console.log(second(first("laaaaabas! "), 5));
 
 //4 Parašykite funkciją, kuri skaičiuotų, iš kiek sveikų skaičių jos argumentas dalijasi be liekanos (išskyrus vienetą ir patį save)
 
@@ -32,55 +31,81 @@ console.log(four(4));
 //5 Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 33 iki 77.
 //Išrūšiuokite masyvą pagal daliklių be liekanos kiekį mažėjimo tvarka, panaudodami ketvirto uždavinio funkciją.
 
-function getRandomArrOf100(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-const arr =[];
-  const riba = 100;
-
+function getRandomArr(min, max, riba) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  const arr = [];
 
   for (let i = 0; i < riba; i++) {
     arr.push(Math.floor(Math.random() * (max - min + 1) + min));
   }
-  return arr
+  return arr;
 }
-getRandomArrOf100();
-console.log(getRandomArrOf100(33, 77));
+getRandomArr();
+console.log("penktas su trim argumentais", getRandomArr(33, 77, 100));
 
- let arejus = getRandomArrOf100(33, 77);
- let dalikliuArr = []
+let arejus = getRandomArr(33, 77, 100);
+let dalikliuArr = [];
 
-for(num of arejus){
-    console.log(four(num));
-    dalikliuArr.push(four(num));
+for (num of arejus) {
+  dalikliuArr.push(four(num));
 }
-const sorted = dalikliuArr.sort((a, b) => b - a);
-console.log("sorted", sorted)
 
+arejus.sort((a, b) => {
+  const dalikliuSkaiciusA = four(a);
+  const dalikliuSkaiciusB = four(b);
 
-arejus.sort((a,b)=>{
-const dalikliuSkaiciusA = four(a);
-const dalikliuSkaiciusB = four(b);
+  return dalikliuSkaiciusB - dalikliuSkaiciusA;
+});
+console.log("arejus pagal dalikliu mazejima", arejus);
 
-return dalikliuSkaiciusB-dalikliuSkaiciusA
-})
-console.log("arejus", arejus)
-
-
-//6 Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 333 iki 777. 
+//6 Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 333 iki 777.
 //Naudodami 4 uždavinio funkciją iš masyvo ištrinkite pirminius skaičius.
 
+const uzd6Arr = getRandomArr(333, 777, 100);
+console.log("sestas visas arejus", uzd6Arr);
+const uzd6pirminiai = [];
+for (const number of uzd6Arr) {
+  if (four(number) === 0) {
+    uzd6pirminiai.push(number);
+  }
+}
+console.log("uzd6pirminiai:", uzd6pirminiai);
 
-const uzd6Arr = getRandomArrOf100(333, 777);
-console.log("sestas", uzd6Arr)
-for(const number of uzd6Arr){
-    
+//7 Sugeneruokite atsitiktinio (nuo 10 iki 20) ilgio masyvą, kurio visi, išskyrus paskutinį, elementai yra
+// atsitiktiniai skaičiai nuo 0 iki 10,
+//o paskutinis masyvas, kuris generuojamas pagal tokią pat salygą kaip ir pirmasis masyvas.
+
+// Viską pakartokite atsitiktinį nuo 10 iki 30  kiekį kartų.
+// Paskutinio masyvo paskutinis elementas yra lygus 0;
+
+function getRandomNumber(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+let masyvoIlgis = getRandomNumber(10,20)-1;
+
+let dynamicArr = getRandomArr(0, 10, masyvoIlgis);
+dynamicArr.push(0)
+
+for (let i = 0; i < getRandomNumber(10,30); i++) {
+  let newArr = [];
+  newArr = getRandomArr(0, 10, masyvoIlgis);
+  newArr.push(dynamicArr);
+  dynamicArr = newArr
+}
+console.log("iupdate", dynamicArr)
 
 
-//7 Sugeneruokite atsitiktinio (nuo 10 iki 20) ilgio masyvą, kurio visi, išskyrus paskutinį, elementai yra atsitiktiniai skaičiai nuo 0 iki 10, 
-//o paskutinis masyvas, kuris generuojamas pagal tokią pat salygą kaip ir pirmasis masyvas. Viską pakartokite atsitiktinį nuo 10 iki 30  kiekį kartų. Paskutinio masyvo paskutinis elementas yra lygus 0;
+// firstArr[firstArr.length-1].push(0)
+
+// firstArr[firstArr.length-1].push([getRandomArr(0,10,masyvoIlgis-1)])
+// console.log("firstArr", firstArr);
+
+// console.log("myArr",myArr)
+// console.log("kitasArr",kitasArr)
 
 //8 Suskaičiuokite septinto uždavinio elementų, kurie nėra masyvai, sumą. Skaičiuoti reikia visuose masyvuose ir submasyvuose.
 
