@@ -85,30 +85,34 @@ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-let masyvoIlgis = getRandomNumber(10,20) - 1;
+let masyvoIlgis = getRandomNumber(10, 20) - 1;
 
 let dynamicArr = getRandomArr(0, 10, masyvoIlgis);
-dynamicArr.push(0)
+dynamicArr.push(0);
 
-for (let i = 0; i < getRandomNumber(10,30); i++) {
+for (let i = 0; i < getRandomNumber(10, 30); i++) {
   let newArr = [];
   newArr = getRandomArr(0, 10, masyvoIlgis);
   newArr.push(dynamicArr);
-  dynamicArr = newArr
+  dynamicArr = newArr;
 }
-console.log("iupdate", dynamicArr)
-
-
-// firstArr[firstArr.length-1].push(0)
-
-// firstArr[firstArr.length-1].push([getRandomArr(0,10,masyvoIlgis-1)])
-// console.log("firstArr", firstArr);
-
-// console.log("myArr",myArr)
-// console.log("kitasArr",kitasArr)
+console.log("dynamicArr", dynamicArr);
 
 //8 Suskaičiuokite septinto uždavinio elementų, kurie nėra masyvai, sumą. Skaičiuoti reikia visuose masyvuose ir submasyvuose.
 
-//9 Sugeneruokite masyvą iš trijų elementų, kurie yra atsitiktiniai skaičiai nuo 1 iki 33. Jeigu tarp trijų paskutinių elementų yra nors vienas ne pirminis skaičius, prie masyvo pridėkite dar vieną elementą- atsitiktinį skaičių nuo 1 iki 33. Vėl patikrinkite pradinę sąlygą ir jeigu reikia pridėkite dar vieną elementą. Kartokite, kol sąlyga nereikalaus pridėti elemento.
+//9 Sugeneruokite masyvą iš trijų elementų, kurie yra atsitiktiniai skaičiai nuo 1 iki 33.
+//Jeigu tarp trijų paskutinių elementų yra nors vienas ne pirminis skaičius, prie masyvo pridėkite dar vieną elementą- atsitiktinį skaičių nuo 1 iki 33.
+//Vėl patikrinkite pradinę sąlygą ir jeigu reikia pridėkite dar vieną elementą. Kartokite, kol sąlyga nereikalaus pridėti elemento.
+
+let devintas = getRandomArr(1, 33, 3);
+console.log("devintas", devintas);
+
+for (const number of devintas) {
+  if (four(number) !== 0) {
+    devintas.push(getRandomArr(1, 33, 1));
+  }
+}
+console.log("devintas2", devintas);
+
 
 //10 Sugeneruokite masyvą iš 10 elementų, kurie yra masyvai iš 10 elementų, kurie yra atsitiktiniai skaičiai nuo 1 iki 100. Jeigu tokio didelio masyvo (ne atskirai mažesnių) pirminių skaičių vidurkis mažesnis už 70, suraskite masyve mažiausią skaičių (nebūtinai pirminį) ir prie jo pridėkite 3. Vėl paskaičiuokite masyvo pirminių skaičių vidurkį ir jeigu mažesnis nei 70 viską kartokite.
