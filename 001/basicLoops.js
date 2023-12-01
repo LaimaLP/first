@@ -36,13 +36,96 @@ console.log(antras);
 const trecias = "Labas";
 
 function repeat(argument, number) {
- 
-   return  argument.repeat(number)
-    
-    
+  let value = "";
+  for (let i = 0; i < number; i++) {
+    value += argument;
   }
+  return value;
+}
 
-
-repeat()
-console.log(repeat("Labas",5))
+console.log("trecias", repeat("Labas ", 2));
 //4. Pasinaudojus ciklu ir ir console.log atspauzdinkite kintamąjį iš 2 uždavinio 7 kartus;
+console.log("ketvirtas", repeat(antras, 7));
+
+//5. Pasinaudojus ciklu ir ir console.log atspauzdinkite kintamąjį iš 2 uždavinio tiek kartų, koks skaičius yra sugeneruotas;
+
+console.log("penktas", repeat(antras, antras));
+
+//6.  Pasinaudojus ciklu ir ir console.log atspauzdinkite kintamąjį iš 2 uždavinio tiek kartų, koks skaičius yra sugeneruotas,
+//bet tik tada jeigu jis didesnis už 7;
+console.log("sestas", antras > 7 ? repeat(antras, antras) : null);
+
+function six(parametras) {
+  return parametras > 7 ? repeat(parametras, parametras) : null;
+}
+
+console.log("six funckijoj", six(antras));
+
+//7 Deklaruokite kintamąjį už ciklo ribų. Ciklo viduje generuokite atsitiktinius skaičius funkcija rand(),
+// kurie yra iš intervalo 10…20. Ciklą kartokite 5 kartus;
+let septintas;
+let suma = 0;
+for (let i = 0; i < 5; i++) {
+  septintas = getRandomIntInclusive(10, 20);
+  suma += septintas;
+}
+console.log("septintas", septintas);
+//B Skaičiuokite ciklo viduje generuojamų reikšmių sumą, ją priskirdami kintamajam, kurį sukūrėte už ciklo ribų.
+//Rezultatą atspauzdinkite pasinaudodami console.log už ciklo ribų;
+
+let septintasB = 0;
+for (let i = 0; i < 5; i++) {
+  septintasB += getRandomIntInclusive(10, 20);
+}
+console.log("septintasB:", septintasB);
+
+// C Skaičius, generuojamus ciklo viduje dėkite į stringo tipo kintamąjį tarp skaičių darydami tarpą.
+//Stringo tipo kintamąjį atspauzdinkite už ciklo ribų jam pasibaigus;
+let septintasC = "";
+for (let i = 0; i < 5; i++) {
+  septintasC += getRandomIntInclusive(10, 20) + " ";
+}
+console.log("septintasC", septintasC);
+
+// 7D Skaičius, generuojamus ciklo viduje dėkite į stringo tipo kintamąjį tarp skaičių darydami tarpą.
+//Ciklui pasibaigus prie stringo tipo kintamojo pridėkite ciklo viduje generuotų skaičių sumą, paskaičiuotą kaip B dalyje.
+//Stringo tipo kintamąjį atspausdinkite pasinaudodami console.log;
+
+let septintasD = "";
+let sumaD = 0;
+for (let i = 0; i < 5; i++) {
+  septintasD += getRandomIntInclusive(10, 20) + " ";
+  sumaD += getRandomIntInclusive(10, 20);
+}
+let resultD = septintasD + sumaD;
+console.log("septintasD", septintasD);
+console.log("sumaD", sumaD);
+
+console.log("resultD", resultD);
+
+// 8 Deklaruokite kintamąjį (jeigu reikia kelis kintamuosius) už ciklo ribų.
+//Ciklo viduje generuokite atsitiktinius skaičius funkcija rand(), kurie yra iš intervalo 10…25.
+//Ciklą kartokite tol, kol ciklo viduje bus sugeneruotas skaičius mažesnis nei 12;
+
+let sugeneruotasSkaicius;
+let testiGeneravima = true;
+let kiekIteraciju = 0;
+let kiekSumuojamu = 0;
+let sumaC = 0;
+let kiekAtmetamu;
+
+while (testiGeneravima) {
+  sugeneruotasSkaicius = getRandomIntInclusive(10, 25);
+  console.log("cikle", sugeneruotasSkaicius);
+  if (sugeneruotasSkaicius < 12) {
+    testiGeneravima = false;
+  }
+  kiekIteraciju++;
+  if (sugeneruotasSkaicius < 18) {
+    sumaC += sugeneruotasSkaicius;
+    kiekSumuojamu++
+  }
+}
+console.log("astuntasPirmas", sugeneruotasSkaicius);
+console.log("kiekIteraciju", kiekIteraciju);
+console.log("sumaC", sumaC)

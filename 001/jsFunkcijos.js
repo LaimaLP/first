@@ -92,7 +92,7 @@ dynamicArr.push(0);
 
 for (let i = 0; i < getRandomNumber(10, 30); i++) {
   let newArr = [];
-  newArr = getRandomArr(0, 10, masyvoIlgis);
+  newArr = getRandomArr(0, 10, getRandomNumber(10, 20) - 1);
   newArr.push(dynamicArr);
   dynamicArr = newArr;
 }
@@ -113,6 +113,5 @@ for (const number of devintas) {
   }
 }
 console.log("devintas2", devintas);
-
 
 //10 Sugeneruokite masyvą iš 10 elementų, kurie yra masyvai iš 10 elementų, kurie yra atsitiktiniai skaičiai nuo 1 iki 100. Jeigu tokio didelio masyvo (ne atskirai mažesnių) pirminių skaičių vidurkis mažesnis už 70, suraskite masyve mažiausią skaičių (nebūtinai pirminį) ir prie jo pridėkite 3. Vėl paskaičiuokite masyvo pirminių skaičių vidurkį ir jeigu mažesnis nei 70 viską kartokite.
