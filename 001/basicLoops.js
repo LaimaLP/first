@@ -107,25 +107,80 @@ console.log("resultD", resultD);
 //Ciklo viduje generuokite atsitiktinius skaičius funkcija rand(), kurie yra iš intervalo 10…25.
 //Ciklą kartokite tol, kol ciklo viduje bus sugeneruotas skaičius mažesnis nei 12;
 
+// let sugeneruotasSkaicius;
+// let testiGeneravima = true;
+// let kiekIteraciju = 0;
+// let kiekSumuojamu = 0;
+// let sumaC = 0;
+// let kiekAtmetamu;
+// let kiekLyginiu = 0;
+// let kiekNelyginiu =0;
+
+// while (testiGeneravima) {
+//   sugeneruotasSkaicius = getRandomIntInclusive(10, 25);
+//   console.log("cikle", sugeneruotasSkaicius);
+
+//   if (sugeneruotasSkaicius < 12) {
+//     testiGeneravima = false;
+//   }
+
+//   if(sugeneruotasSkaicius%2 !==0){
+//     kiekNelyginiu++;
+//   }else{
+//     kiekLyginiu++;
+//   }
+//   kiekIteraciju++;
+//   if (sugeneruotasSkaicius < 18) {
+//     sumaC += sugeneruotasSkaicius;
+//     kiekSumuojamu++
+//   }
+
+// }
+// console.log("astuntoResult", sugeneruotasSkaicius);
+// console.log("kiekIteraciju", kiekIteraciju);
+// console.log("sumaC", sumaC)
+// console.log("kiekNelyginiu:", kiekNelyginiu)
+// console.log("kiekLyginiu:", kiekLyginiu)
+// 8 F Ciklą iš dalies B kartokite tol,  kol to ciklo iteracijų kiekis bus didesnis nei 20 (vieno ciklo).
+// Paskaičiuokite kiek pakartojimų buvo atlikta ir rezultatą atspauzdinkite pabaigoje.
+console.clear();
+
 let sugeneruotasSkaicius;
 let testiGeneravima = true;
 let kiekIteraciju = 0;
 let kiekSumuojamu = 0;
 let sumaC = 0;
 let kiekAtmetamu;
+let kiekLyginiu = 0;
+let kiekNelyginiu = 0;
 
-while (testiGeneravima) {
+let iteracijuSk = kiekIteraciju++;
+
+while (kiekIteraciju>=20) {
   sugeneruotasSkaicius = getRandomIntInclusive(10, 25);
   console.log("cikle", sugeneruotasSkaicius);
+  kiekIteraciju++;
+
   if (sugeneruotasSkaicius < 12) {
     testiGeneravima = false;
   }
-  kiekIteraciju++;
-  if (sugeneruotasSkaicius < 18) {
-    sumaC += sugeneruotasSkaicius;
-    kiekSumuojamu++
-  }
 }
-console.log("astuntasPirmas", sugeneruotasSkaicius);
+
+console.log("astuntoResult", sugeneruotasSkaicius);
 console.log("kiekIteraciju", kiekIteraciju);
-console.log("sumaC", sumaC)
+
+
+//Kazys ir Petras žaidžiai bingo. Petras per vieną partiją surenka taškų kiekį nuo 10 iki 20,
+// Kazys - surenka taškų kiekį nuo 5 iki 25. Console.log išvesti žaidėjų vardus su taškų kiekiu 
+//ir “Partiją laimėjo: ​laimėtojo vardas​”. Taškų kiekį generuokite funkcija ​rand()​.
+// Žaidimą laimi tas, kas greičiau surenka 222 taškus. 
+//Partijas kartokite tol, kol kažkuris žaidėjas pirmas surenks 222 arba daugiau taškų.
+
+let PetroTaskuKiekis = 0
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min); 
+}
+console.log("PetroTaskuKiekis:", `Petro taškai ${getRandomIntInclusive(10,20)}`)
+console.log("KazioTaskuKiekis", `Kazio taškai ${getRandomIntInclusive(5,25)}`)

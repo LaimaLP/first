@@ -98,6 +98,24 @@ for (let i = 0; i < getRandomNumber(10, 30); i++) {
 }
 console.log("dynamicArr", dynamicArr);
 
+let repeats = Math.floor(Math.random()*10 + 20);
+let asd3 = [];
+
+for(let i = 0; i < repeats; i++)
+{
+    if(i === 0){
+        const temp = new Array(Math.floor(Math.random()*10+10)).fill(1).map(el => Math.floor(Math.random()*10));
+        temp.push(0);
+        asd3 = [...temp];
+    }
+    else{
+        const temp = new Array(Math.floor(Math.random()*10+10)).fill(1).map(el => Math.floor(Math.random()*10));
+        temp.push(asd3);
+        asd3 = [...temp];
+    }
+}
+console.log("asd3: ", asd3);
+
 //8 Suskaičiuokite septinto uždavinio elementų, kurie nėra masyvai, sumą. Skaičiuoti reikia visuose masyvuose ir submasyvuose.
 
 //9 Sugeneruokite masyvą iš trijų elementų, kurie yra atsitiktiniai skaičiai nuo 1 iki 33.
@@ -115,3 +133,6 @@ for (const number of devintas) {
 console.log("devintas2", devintas);
 
 //10 Sugeneruokite masyvą iš 10 elementų, kurie yra masyvai iš 10 elementų, kurie yra atsitiktiniai skaičiai nuo 1 iki 100. Jeigu tokio didelio masyvo (ne atskirai mažesnių) pirminių skaičių vidurkis mažesnis už 70, suraskite masyve mažiausią skaičių (nebūtinai pirminį) ir prie jo pridėkite 3. Vėl paskaičiuokite masyvo pirminių skaičių vidurkį ir jeigu mažesnis nei 70 viską kartokite.
+
+
+
