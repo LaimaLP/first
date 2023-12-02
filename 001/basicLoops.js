@@ -184,3 +184,35 @@ function getRandomIntInclusive(min, max) {
 }
 console.log("PetroTaskuKiekis:", `Petro taškai ${getRandomIntInclusive(10,20)}`)
 console.log("KazioTaskuKiekis", `Kazio taškai ${getRandomIntInclusive(5,25)}`)
+
+let PetroT = getRandomIntInclusive(10,20)
+let KazioT=getRandomIntInclusive(5,25)
+
+function whoseWon(){
+  return PetroT > KazioT ? "Petras" : "Kazys"
+}
+
+console.log(`Petras surinko ${PetroT}, Kazys ${KazioT}. Partija laimejo: ${whoseWon()} `)
+
+
+
+let PetroSum =0;
+let KazioSum =0;
+let is222Reached = false;
+function checkWhoFirstReach222(){
+  while(!is222Reached){
+    PetroSum += getRandomIntInclusive(10,20);
+    KazioSum += getRandomIntInclusive(5,25);
+    if(PetroSum >= 222){
+      is222Reached = true;
+      alert("Petras won")
+    }
+    if(KazioSum >= 222){
+      is222Reached = true;
+      alert("Kazys won")
+    }
+  }
+}
+
+checkWhoFirstReach222()
+console.log("kuris pasieke?:", `Petro: ${PetroSum}, Kazio: ${KazioSum}`)
