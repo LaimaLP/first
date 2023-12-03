@@ -80,3 +80,17 @@ const result = arr.indexOf(firstIndexOfValue10[0]);
 console.log("firstIndexOfValue10", firstIndexOfValue10)
 console.log("result", result)
 
+//3 Sugeneruokite masyvą, kurio reikšmės atsitiktinės raidės A, B, C ir D, o ilgis 200. 
+//Suskaičiuokite kiek yra kiekvienos raidės.
+
+let arrOfLetters=[]
+const arrValues = ["A", "B", "C", "D"];
+function createRandomLetter(letters){
+    let randomIndex = Math.floor(Math.random() * letters.length)
+    return letters[randomIndex]
+}
+while(arrOfLetters.length<200){
+    arrOfLetters.push(createRandomLetter(arrValues))
+}
+console.log("arrValues", arrValues)
+console.log("arrOfLetters", arrOfLetters)
