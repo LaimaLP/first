@@ -8,9 +8,11 @@ fetch(file)
 
 function start1Task(value) {
   let inputValue = "";
-  inputValue = value.toString();
+  inputValue = value.toString().toLowerCase();
   let arr = inputValue.split("\n");
 
+
+console.log("value vvvv", arr)
   let allValidNumber = [
     "one",
     "two",
@@ -26,6 +28,7 @@ function start1Task(value) {
   let twoDigitsArr = [];
   let sum = 0;
   for (let item of arr) {
+    console.log('Itemas: ', item)
     let textas = "";
     for (let j in item) {
 
@@ -33,24 +36,23 @@ function start1Task(value) {
 
       for (let i = 0; i < allValidNumber.length; i++) {
         if (textas.includes(allValidNumber[i])) {
-          textas = textas.replace(allValidNumber[i], i + 1); //nkjeight -> nkj8
+          textas = textas.replace(allValidNumber[i], i + 1)
+          textas += (item[j]); //nkjeight -> nkj8
         }
       }
     }
 
-    item = textas;
     let arrNumber = [];
-    for (let i = 0; i < item.length; i++) {
-      if (Number.isInteger(parseInt(item[i]))) {
-        arrNumber.push(item[i]);
+    for (let i = 0; i < textas.length; i++) {
+      if (Number.isInteger(parseInt(textas[i]))) {
+        arrNumber.push(textas[i].toString());
       }
     }
-
-    twoDigitsArr.push(arrNumber[0] + arrNumber[arrNumber.length - 1]);
+    twoDigitsArr.push(arrNumber[0].toString() + arrNumber[arrNumber.length - 1].toString());
   }
-  console.log("twoDigitsArr" , twoDigitsArr)
+  console.log("twoDigitsArr", twoDigitsArr);
   for (const item of twoDigitsArr) {
-    sum += parseInt(item);
+    sum += +item;
   }
   console.log("sumaaaaaaaaa", sum);
 
@@ -64,7 +66,7 @@ function start1Task(value) {
 
 
   //54678
-
+//54676
 
 console.log("veikia")
   let test = "laima"
