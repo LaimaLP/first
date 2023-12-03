@@ -156,7 +156,7 @@ let kiekNelyginiu = 0;
 
 let iteracijuSk = kiekIteraciju++;
 
-while (kiekIteraciju>=20) {
+while (kiekIteraciju >= 20) {
   sugeneruotasSkaicius = getRandomIntInclusive(10, 25);
   console.log("cikle", sugeneruotasSkaicius);
   kiekIteraciju++;
@@ -168,51 +168,149 @@ while (kiekIteraciju>=20) {
 
 console.log("astuntoResult", sugeneruotasSkaicius);
 console.log("kiekIteraciju", kiekIteraciju);
+console.clear();
+//9. Ciklo viduje generuokite atsitiktinius skaičius funkcija rand(), kurie yra iš intervalo 5-10.
+//Ciklą kartokite tol, kol ciklo viduje bus sugeneruotas skaičius 5;
+//A Ciklo viduje paleiskite dar vieną ciklą kurį kartokite tiek kartų, koks skaičius buvo sugeneruotas.
+//Paskaičiuokite kiek iteracijų padarė išorinis ciklas ir kiek bendrai iteracijų padarė vidinis ciklas.
+//Rezultatus atspauzdinkite pasinaudodami console.log už ciklo ribų jam pasibaigus;
+// B Padarykite taip, kad išorinis ciklas pasibaigtų kai 5 yra sugeneruojamas ne pirmą, bet trečią kartą
+//ir paskaičiuokite iteracijas analogiškai kaip A dalyje;
 
 
-//Kazys ir Petras žaidžiai bingo. Petras per vieną partiją surenka taškų kiekį nuo 10 iki 20,
-// Kazys - surenka taškų kiekį nuo 5 iki 25. Console.log išvesti žaidėjų vardus su taškų kiekiu 
-//ir “Partiją laimėjo: ​laimėtojo vardas​”. Taškų kiekį generuokite funkcija ​rand()​.
-// Žaidimą laimi tas, kas greičiau surenka 222 taškus. 
-//Partijas kartokite tol, kol kažkuris žaidėjas pirmas surenks 222 arba daugiau taškų.
+//A
+let isorinesIteracijos = 0;
+let vidinesIteracijos = 0;
+let generuojamas = 0;
+let arTestiCIkla = true;
 
-let PetroTaskuKiekis = 0
-function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min); 
-}
-console.log("PetroTaskuKiekis:", `Petro taškai ${getRandomIntInclusive(10,20)}`)
-console.log("KazioTaskuKiekis", `Kazio taškai ${getRandomIntInclusive(5,25)}`)
+// for (let i = 0; arTestiCIkla; i++) {
+while (arTestiCIkla) {
+  generuojamas = getRandomIntInclusive(5, 10);
 
-let PetroT = getRandomIntInclusive(10,20)
-let KazioT=getRandomIntInclusive(5,25)
+  console.log("generuojamas viduje", generuojamas);
 
-function whoseWon(){
-  return PetroT > KazioT ? "Petras" : "Kazys"
-}
+  isorinesIteracijos++;
+  if (generuojamas === 5) {
+    arTestiCIkla = false;
+  }
 
-console.log(`Petras surinko ${PetroT}, Kazys ${KazioT}. Partija laimejo: ${whoseWon()} `)
-
-
-
-let PetroSum =0;
-let KazioSum =0;
-let is222Reached = false;
-function checkWhoFirstReach222(){
-  while(!is222Reached){
-    PetroSum += getRandomIntInclusive(10,20);
-    KazioSum += getRandomIntInclusive(5,25);
-    if(PetroSum >= 222){
-      is222Reached = true;
-      alert("Petras won")
-    }
-    if(KazioSum >= 222){
-      is222Reached = true;
-      alert("Kazys won")
-    }
+  for (let i = 1; i <= generuojamas; i++) {
+    vidinesIteracijos++;
   }
 }
+console.log("generuojamas", generuojamas);
+console.log("isorinesIteracijos", isorinesIteracijos);
+console.log("vidinesIteracijos", vidinesIteracijos);
 
-checkWhoFirstReach222()
-console.log("kuris pasieke?:", `Petro: ${PetroSum}, Kazio: ${KazioSum}`)
+// 9to B: 
+
+let B_isorinesIteracijos = 0;
+let B_vidinesIteracijos = 0;
+let B_generuojamas = 0;
+let B_arTestiCIkla = true;
+let gavauPenkis = 0;
+while (B_arTestiCIkla) {
+  B_generuojamas = getRandomIntInclusive(5, 10);
+  B_isorinesIteracijos++;
+  if (B_generuojamas === 5) {
+    gavauPenkis++;
+  }
+    if (gavauPenkis === 3) {
+      B_arTestiCIkla = false;
+    }
+  
+  
+  for (let i = 1; i <= B_generuojamas; i++) {
+    B_vidinesIteracijos++;
+  }
+}
+console.log("gavauPenkis", gavauPenkis)
+console.log("B_generuojamas", B_generuojamas);
+console.log("B_isorinesIteracijos", B_isorinesIteracijos);
+console.log("B_vidinesIteracijos", B_vidinesIteracijos);
+
+//9to C Padarykite analogiškai kaip B dalyje, bet tik kai 5 yra sugeneruojami 3 kartus iš eilės;
+
+let C_isorinesIteracijos = 0;
+let C_vidinesIteracijos = 0;
+let C_generuojamas = 0;
+let C_arTestiCIkla = true;
+let threeInRow5 = 0;
+while (C_arTestiCIkla) {
+
+  C_generuojamas = getRandomIntInclusive(5, 10);
+  C_isorinesIteracijos++;
+
+  if (C_generuojamas === 5) {
+    threeInRow5++;
+  }else{
+    threeInRow5=0
+  }
+    if (threeInRow5 === 3) {
+      C_arTestiCIkla = false;
+    }
+  
+  
+  for (let i = 1; i <= C_generuojamas; i++) {
+    C_vidinesIteracijos++;
+  }
+}
+console.log("threeInRow5", threeInRow5)
+console.log("C_generuojamas", C_generuojamas);
+console.log("C_isorinesIteracijos", C_isorinesIteracijos);
+console.log("C_vidinesIteracijos", C_vidinesIteracijos);
+
+
+
+
+
+//10. Kazys ir Petras žaidžiai bingo. Petras per vieną partiją surenka taškų kiekį nuo 10 iki 20,
+// Kazys - surenka taškų kiekį nuo 5 iki 25. Console.log išvesti žaidėjų vardus su taškų kiekiu
+//ir “Partiją laimėjo: ​laimėtojo vardas​”. Taškų kiekį generuokite funkcija ​rand()​.
+// Žaidimą laimi tas, kas greičiau surenka 222 taškus.
+//Partijas kartokite tol, kol kažkuris žaidėjas pirmas surenks 222 arba daugiau taškų.
+
+// let PetroTaskuKiekis = 0;
+// function getRandomIntInclusive(min, max) {
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+//   return Math.floor(Math.random() * (max - min + 1) + min);
+// }
+// console.log(
+//   "PetroTaskuKiekis:",
+//   `Petro taškai ${getRandomIntInclusive(10, 20)}`
+// );
+// console.log("KazioTaskuKiekis", `Kazio taškai ${getRandomIntInclusive(5, 25)}`);
+
+// let PetroT = getRandomIntInclusive(10, 20);
+// let KazioT = getRandomIntInclusive(5, 25);
+
+// function whoseWon() {
+//   return PetroT > KazioT ? "Petras" : "Kazys";
+// }
+
+// console.log(
+//   `Petras surinko ${PetroT}, Kazys ${KazioT}. Partija laimejo: ${whoseWon()} `
+// );
+
+// let PetroSum = 0;
+// let KazioSum = 0;
+// let is222Reached = false;
+// function checkWhoFirstReach222() {
+//   while (!is222Reached) {
+//     PetroSum += getRandomIntInclusive(10, 20);
+//     KazioSum += getRandomIntInclusive(5, 25);
+//     if (PetroSum >= 222) {
+//       is222Reached = true;
+//       alert("Petras won");
+//     }
+//     if (KazioSum >= 222) {
+//       is222Reached = true;
+//       alert("Kazys won");
+//     }
+//   }
+// }
+
+// checkWhoFirstReach222();
+// console.log("kuris pasieke?:", `Petro: ${PetroSum}, Kazio: ${KazioSum}`);
