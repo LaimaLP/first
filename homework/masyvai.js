@@ -189,24 +189,35 @@ console.log("arr_5_antras", arr_5_antras);
 //6 Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra pirmame 5 uždavinio masyve,
 //bet nėra antrame 5 uždavinio masyve.
 
+let arr_6 = arr_5_pirmas.filter((item) => !arr_5_antras.includes(item));
 
-let arr_6 = arr_5_pirmas.filter(item=> !arr_5_antras.includes(item) );
-
-console.log("arr_6",arr_6);
+console.log("arr_6", arr_6);
 
 // 7 Sugeneruokite masyvą iš elementų, kurie kartojasi abiejuose 5 uždavinio masyvuose.
-let arr_7 = arr_5_pirmas.filter(item=> arr_5_antras.includes(item) )
-console.log("arr_7",arr_7);
+let arr_7 = arr_5_pirmas.filter((item) => arr_5_antras.includes(item));
+console.log("arr_7", arr_7);
 
 // 8. Sugeneruokite masyvą, kurio indeksus sudarytų 5 uždavinio pirmo masyvo reikšmės, o jo reikšmės  būtų iš  antrojo 5 uždavinio masyvo.
-let arr_8  = [];
+let arr_8 = [];
 
-for(let i=0; i<100; i++){
- 
-    console.log("item", item)
+for (let i = 0; i < 100; i++) {
+  console.log("item", item);
 
-arr_8.push({[arr_5_pirmas[i]] : arr_5_antras[i]})
+  arr_8.push({ [arr_5_pirmas[i]]: arr_5_antras[i] });
 }
 
 // arr_5_antras[j]
-console.log(arr_8)
+console.log(arr_8);
+
+// 9. Sugeneruokite 10 skaičių masyvą pagal taisyklę: Du pirmi skaičiai- atsitiktiniai nuo 5 iki 25.
+//Trečias, pirmo ir antro suma. Ketvirtas- antro ir trečio suma. Penktas trečio ir ketvirto suma ir t.t.
+
+let arr_9 = [];
+
+arr_9.push(getRandomInt(5, 25));
+arr_9.push(getRandomInt(5, 25));
+while (arr_9.length < 10) {
+  arr_9.push(arr_9[arr_9.length - 2] + arr_9[arr_9.length - 1]); //1ir2   0 ir 1
+}
+
+console.log("arr_9, arr_9", arr_9);
