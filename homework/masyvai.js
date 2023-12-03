@@ -118,7 +118,6 @@ console.log("poKiekRaidziuu", poKiekRaidziu(arrOfLetters));
 // console.log("arrValues", arrValues);
 // console.log("arrOfLetters", arrOfLetters);
 
-
 //4 Sugeneruokite 3 masyvus pagal 3 uždavinio sąlygą. Sudėkite masyvus, sudėdami atitinkamas reikšmes.
 //Paskaičiuokite kiek unikalių (po vieną, nesikartojančių) reikšmių ir kiek unikalių kombinacijų gavote.
 let firstArr = [];
@@ -165,17 +164,49 @@ console.log("sumOfB", sumOfB);
 console.log("sumOfC", sumOfC);
 console.log("sumOfD", sumOfD);
 
-//5 Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai nuo 100 iki 999. Masyvų ilgiai 100. 
+//5 Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai nuo 100 iki 999. Masyvų ilgiai 100.
 //Masyvų reikšmės turi būti unikalios savo masyve (t.y. neturi kartotis).
 
 function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
 }
-let arr_5=[];
-  for(let i=0; i<100;i++){
-    if(!arr_5.includes(arr_5[i]))
-    arr_5.push(getRandomInt(100,999))
-  }
-  console.log("arr_5", arr_5)
+let arr_5_pirmas = [];
+for (let i = 0; i < 100; i++) {
+  if (!arr_5_pirmas.includes(arr_5_pirmas[i]))
+    arr_5_pirmas.push(getRandomInt(100, 999));
+}
+console.log("arr_5_pirmas", arr_5_pirmas);
+
+let arr_5_antras = [];
+for (let i = 0; i < 100; i++) {
+  if (!arr_5_antras.includes(arr_5_antras[i]))
+    arr_5_antras.push(getRandomInt(100, 999));
+}
+console.log("arr_5_antras", arr_5_antras);
+
+//6 Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra pirmame 5 uždavinio masyve,
+//bet nėra antrame 5 uždavinio masyve.
+
+
+let arr_6 = arr_5_pirmas.filter(item=> !arr_5_antras.includes(item) );
+
+console.log("arr_6",arr_6);
+
+// 7 Sugeneruokite masyvą iš elementų, kurie kartojasi abiejuose 5 uždavinio masyvuose.
+let arr_7 = arr_5_pirmas.filter(item=> arr_5_antras.includes(item) )
+console.log("arr_7",arr_7);
+
+// 8. Sugeneruokite masyvą, kurio indeksus sudarytų 5 uždavinio pirmo masyvo reikšmės, o jo reikšmės  būtų iš  antrojo 5 uždavinio masyvo.
+let arr_8  = [];
+
+for(let i=0; i<100; i++){
+ 
+    console.log("item", item)
+
+arr_8.push({[arr_5_pirmas[i]] : arr_5_antras[i]})
+}
+
+// arr_5_antras[j]
+console.log(arr_8)
