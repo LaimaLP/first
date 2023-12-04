@@ -9,57 +9,60 @@ const arr2 = new Array();
 
 class Box {
   constructor() {
-    this.item = ""
+    this.item, 
+    this.svoris;
   }
-  put(what) {
-    this.item = what
+  put(a) {
+    this.item = a;
   }
-  empty(){
+  empty() {
     this.item = "";
   }
 }
-const box1 = new Box();
-const box2 = new Box();
+const skalbiniuDeze = new Box();
+skalbiniuDeze.put([4,7,6])
+const dovanuDezute = new Box();
 
-box1.put("pen")
-box2.put("pencil")
-box1.put("eraser")
+// box1.put("pen");
+// box2.put("pencil");
+// box1.put("eraser");
 
-box1.empty()
-box2.empty()
+// box1.empty();
+// box2.empty();
 
+// console.log(box1, box2);
 
-console.log(box1, box2)
+class RandomDigit {
 
-class RandomDigit{
-    constructor(){
-        this.digit = this.random(0,9);
-       
-    }
-random(min, max) {
-            min = Math.ceil(min);
-            max = Math.floor(max);
-            return Math.floor(Math.random() * (max - min) + min);
-    }
+  constructor() {
+    this.digit = this.random(0, 9);
+  }
+  random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  }
 }
 const randomDigit1 = new RandomDigit();
 const randomDigit2 = new RandomDigit();
 
-console.log(randomDigit1)
-console.log(randomDigit2)
+console.log(randomDigit1);
+console.log(randomDigit2);
 
+let arr = [];
+while(arr.length<10){
+arr.push( new RandomDigit())
+}
 
-// let arr = [];
-// while(arr.length<10){
-// arr.push( new RandomDigit())
-// }
+arr.forEach(element => {
+    console.log("arr", element.digit);
+});
 
-console.log("arr", arr)
+console.log("arr", arr);
 
 let arr3 = new Array(10)
-.fill(null)
-.map(_ => new RandomDigit() )
-.map(el => console.log(el.digit) || el.digit);
+  .fill(null)
+  .map((_) => new RandomDigit())
+  .map((el) => console.log(el.digit) || el.digit);
 
-console.log("arr3", arr3)
-
+console.log("arr3", arr3);
