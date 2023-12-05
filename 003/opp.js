@@ -85,3 +85,5 @@ let arr3 = new Array(10)
   .map(el => console.log(el.digit) || el.digit);
 
 console.log("arr3", arr3);
+
+

@@ -15,7 +15,9 @@ class Kibiras1 {
     this.akmenuKiekis += kiekis;
   }
   kiekPririnktaAkmenu() {
-    console.log(this.name + " pririnko sitiek: " + this.akmenuKiekis);
+    console.log(
+      "1 uzdavinys: " + this.name + " pririnko sitiek: " + this.akmenuKiekis
+    );
     return this.akmenuKiekis;
   }
 }
@@ -24,11 +26,8 @@ const pirmasKibiras = new Kibiras1("Jonas");
 const antrasKibiras = new Kibiras1("Petras");
 
 pirmasKibiras.prideti1Akmeni();
-
 pirmasKibiras.pridetiDaugAkmenu(5);
-
 pirmasKibiras.kiekPririnktaAkmenu();
-
 antrasKibiras.prideti1Akmeni();
 antrasKibiras.kiekPririnktaAkmenu();
 
@@ -63,9 +62,12 @@ class Pinigine {
   }
 
   suskaiciuoti() {
-    console.log("metaliniaiPinigai", this.metaliniaiPinigai);
-    console.log("popieriniaiPinigai", this.popieriniaiPinigai);
-    console.log("suma", this.popieriniaiPinigai + this.metaliniaiPinigai);
+    console.log("2 uzdavinys: metaliniu pinigu", this.metaliniaiPinigai);
+    console.log("2 uzdavinys: popieriniu pinigu", this.popieriniaiPinigai);
+    console.log(
+      "2 uzdavinys: pinigu suma",
+      this.popieriniaiPinigai + this.metaliniaiPinigai
+    );
   }
 }
 
@@ -79,10 +81,10 @@ manoPinigine.suskaiciuoti();
 
 console.log("manoPinigine", manoPinigine);
 
-//3.Sukurti klasę Troleibusas. Konstruktoriuje sukurti savybę keleiviuSkaicius kuri yra lygi 0.
-//Parašyti du metodus: ilipa(keleiviuSkaicius) ir islipa(keleiviuSkaicius). O taip pat parašyti metoda vaziuoja(),
-//kuris į konsolę išvestų troleibusu važiuojančių keleivių skaičių. Atkreipkite dėmesį, kad troleibusu važiuoti neigiamas
-//keleivių skaičius negali.
+// 3.Sukurti klasę Troleibusas. Konstruktoriuje sukurti savybę keleiviuSkaicius kuri yra lygi 0.
+// Parašyti du metodus: ilipa(keleiviuSkaicius) ir islipa(keleiviuSkaicius). O taip pat parašyti metoda vaziuoja(),
+// kuris į konsolę išvestų troleibusu važiuojančių keleivių skaičių. Atkreipkite dėmesį, kad troleibusu važiuoti neigiamas
+// keleivių skaičius negali.
 
 class Troleibusas {
   constructor() {
@@ -99,7 +101,7 @@ class Troleibusas {
     }
   }
   vaziuoja() {
-    console.log(this.keleiviuSkaicius);
+    console.log("3 uzdavinys: " + this.keleiviuSkaicius);
   }
 }
 const trulas = new Troleibusas();
@@ -108,53 +110,147 @@ trulas.vaziuoja();
 trulas.islipa(2);
 trulas.vaziuoja();
 
-//8 Sukurti klasę Stikline. Sukurti savybes turis ir kiekis. Turis turi būti pasirenkamas objekto kūrimo metu.
-//Parašyti metodą ipilti(kiekis), kuris keistų savybę kiekis. Jeigu stiklinės tūris yra mažesnis nei pilamas kiekis-
-//kiekis netelpa ir būna lygus tūriui. Parašyti metodą ispilti(), kuris grąžiną kiekį. Pilant išpilamas visas kiekis,
-//tas kas netelpa, nuteka per stalo viršų.  Sukurti metodą stiklinejeYra(), kuris į konsolę atspausdintų kiek stiklinėje yra skysčio.
-//Sukurti tris stiklinės objektus su tūriais: 200, 150, 100. Didžiausią pripilti pilną ir tada ją ispilti į mažesnę stiklinę, o mažesnę į dar mažesnę.
-console.clear()
+//4 (STATIC) Sukurti metodą keleiviuSkaiciusVisuoseTroleibusuose(), kuris rodytų bendrą keleivių skaičių visuose Troleibusas
+//objektuose. Bendram kelevių skaičiaus skaičiavimui sukurkite statinį metodą bendrasKeleiviuSkaicius(keleiviuSkaicius),
+//kuris pridėtų arba atimtų keleivius iš statinės savybės visiKeleiviai (kurioje yra įrašytas bendras keleivių skaičius).
+//Taip pat atitinkamai modifikuokite metodus ilipa(keleiviuSkaicius) ir islipa(keleiviuSkaicius).
 
+let visiKeleiviai = 0;
+
+class Troleibusas2 {
+  constructor() {
+    this.keleiviuSkaicius = 0;
+  }
+  static bendrasKeleiviuSkaicius(keleiviuSkaicius, veiksmas) {
+    if (veiksmas === "+") {
+      visiKeleiviai += keleiviuSkaicius;
+    } else {
+      visiKeleiviai -= keleiviuSkaicius;
+    }
+  }
+
+  ilipa(keleiviuSkaicius) {
+    this.keleiviuSkaicius += keleiviuSkaicius;
+    Troleibusas2.bendrasKeleiviuSkaicius(keleiviuSkaicius, "+");
+  }
+  islipa(keleiviuSkaicius) {
+    if (keleiviuSkaicius > this.keleiviuSkaicius) {
+      this.keleiviuSkaicius = 0;
+    } else {
+      this.keleiviuSkaicius = this.keleiviuSkaicius - keleiviuSkaicius;
+    }
+    Troleibusas2.bendrasKeleiviuSkaicius(keleiviuSkaicius, "-");
+  }
+  vaziuoja() {
+    console.log(
+      "Keleiviu skaicius tam tikrame objekte:",
+      this.keleiviuSkaicius
+    );
+  }
+
+  static keleiviuSkaiciusVisuoseTroleibusuose() {
+    console.log("4 uzdavinys: is viso visu keleiviu", visiKeleiviai);
+  }
+}
+
+const trulas2 = new Troleibusas2();
+const trulas3 = new Troleibusas2();
+trulas2.ilipa(52);
+trulas3.ilipa(2);
+trulas2.islipa(3);
+trulas2.ilipa(12);
+trulas2.vaziuoja();
+Troleibusas2.keleiviuSkaiciusVisuoseTroleibusuose();
+
+//7. (STATIC) Klasėje Kibiras1 (pirmas uždavinys) sukurti metodą akmenuSkaiciusVisuoseKibiruose(),
+//kuris rodytų bendrą visuose kibiruose pririnktų akmenų kiekį (visuose sukurtuose Kibiras objektuose).
+//Skaičiuoti akmenim, kurie buvo surinkti visuose objektuose, naudokite statinę savybę visiAkmenys
+//(kurioje yra įrašytas ir saugomas bendras akmenų skaičius). Taip pat atitinkamai modifikuokite metodus
+//prideti1Akmeni(),  pridetiDaugAkmenu(kiekis).
+
+// let visiAkmenys = bendrasAkmenuSkaicius;
+
+// class Kibiras1 {
+//   constructor(name) {
+//     this.akmenuKiekis = 0;
+//     this.name = name;
+//   }
+//   static akmenuSkaiciusVisuoseKibiruose(kiekis, metodas){
+//     visiAkmenys += this.akmenuKiekis
+//     if(metodas === prideti1Akmeni()){
+//     visiAkmenys+= (this.akmenuKiekis++)
+//   }else{
+//     visiAkmenys+=kiekis
+//   }
+// }
+
+//   prideti1Akmeni() {
+//     this.akmenuKiekis++;
+//     Kibiras1.akmenuSkaiciusVisuoseKibiruose(kiekis,  prideti1Akmeni())
+//   }
+//   pridetiDaugAkmenu(kiekis) {
+//     this.akmenuKiekis += kiekis;
+//     Kibiras1.akmenuSkaiciusVisuoseKibiruose(kiekis, pridetiDaugAkmenu())
+
+//   }
+//   kiekPririnktaAkmenu() {
+//     console.log(this.name + " pririnko sitiek: " + this.akmenuKiekis);
+//     return this.akmenuKiekis;
+//   }
+// }
+
+// const pirmasKibiras = new Kibiras1("Jonas");
+// const antrasKibiras = new Kibiras1("Petras");
+
+// pirmasKibiras.prideti1Akmeni();
+
+// pirmasKibiras.pridetiDaugAkmenu(5);
+
+// pirmasKibiras.kiekPririnktaAkmenu();
+
+// antrasKibiras.prideti1Akmeni();
+// antrasKibiras.kiekPririnktaAkmenu();
+
+// 8 Sukurti klasę Stikline. Sukurti savybes turis ir kiekis. Turis turi būti pasirenkamas objekto kūrimo metu.
+// Parašyti metodą ipilti(kiekis), kuris keistų savybę kiekis. Jeigu stiklinės tūris yra mažesnis nei pilamas kiekis-
+// kiekis netelpa ir būna lygus tūriui. Parašyti metodą ispilti(), kuris grąžiną kiekį. Pilant išpilamas visas kiekis,
+// tas kas netelpa, nuteka per stalo viršų.  Sukurti metodą stiklinejeYra(), kuris į konsolę atspausdintų kiek stiklinėje yra skysčio.
+// Sukurti tris stiklinės objektus su tūriais: 200, 150, 100. Didžiausią pripilti pilną ir tada ją ispilti į mažesnę stiklinę, o mažesnę į dar mažesnę.
+console.clear();
 class Stikline {
-  constructor(param) {
-    this.turis = param;
+  constructor(turis) {
+    this.turis = turis;
     this.kiekis = 0;
   }
-  ipilti(param) {
-    if (param > this.turis) {
-      this.kiekis = this.turis;
-    } else if (param <= this.turis) {
-      this.kiekis += param;
-    }
+  ipilti(kiekis) {
+    this.kiekis = Math.min(this.turis, this.kiekis + kiekis);
+    return this;
   }
-  ispilti(param) {
-    if (param > this.kiekis) {
-      this.kiekis = 0;
-    } else if (param <= this.kiekis){
-         this.kiekis -= param;
-    }
+  ispilti() {
+    const kiekis = this.kiekis;
+    this.kiekis = 0;
+    return kiekis;
   }
+
   stiklinejeYra() {
-    console.log(this.kiekis);
+    console.log("8 uzdavinys kiekis yra: ", this.kiekis);
   }
 }
 const stikline1 = new Stikline(200);
 const stikline2 = new Stikline(150);
 const stikline3 = new Stikline(100);
 
-stikline1.ipilti(200);
-stikline1.ispilti(200);
-stikline2.ipilti(200);
-stikline2.ispilti(200);
-stikline3.ipilti(200);
+// stikline3.ipilti(stikline2.ipilti(stikline1.ipilti(500).ispilti()).ispilti())
 
-stikline1.stiklinejeYra();
-stikline2.stiklinejeYra();
-stikline3.stiklinejeYra();
+stikline3.ipilti(30).stiklinejeYra();
 
-console.log(stikline1);
-console.log(stikline2);
-console.log(stikline3);
+// stikline1.stiklinejeYra();
+// stikline2.stiklinejeYra();
+// stikline3.stiklinejeYra();
+
+// console.log(stikline1);
+// console.log(stikline2);
+// console.log(stikline3);
 
 //9. Sukurti klasę Grybas. Sukurti klasę Krepsys. Krepsys, kuri turi savybę dydis,kuriai konstruktoriuje yra
 //priskiriama reikšmė 500 ir savybę prikrauta (kuri pradžioje lygi 0). Grybas turi tris savybes, kurios taip
@@ -166,15 +262,12 @@ console.log(stikline3);
 
 class Grybas {
   constructor() {
-    this.valgomas = this.getRandomBoolean();
-    this.sukirmijes = this.getRandomBoolean();
-    this.svoris = this.getSvoris(5, 45);
+    this.valgomas = !this.random(0, 1);
+    this.sukirmijes = !this.random(0, 1);
+    this.svoris = this.random(5, 45);
   }
 
-  getRandomBoolean() {
-    return Math.random() < 0.5;
-  }
-  getSvoris(min, max) {
+  random(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -186,25 +279,20 @@ class Krepsys {
     this.prikrauta = 0;
     this.dydis = 500;
   }
-  deti(param) {
-    this.prikrauta += param;
+  deti(grybas) {
+    if (!grybas.sukirmijes && grybas.valgomas) {
+      this.prikrauta += grybas.svoris;
+    }
+    return this.dydis >= this.prikrauta;
   }
 }
 
 const krepsiukas = new Krepsys();
 
-while (krepsiukas.prikrauta < krepsiukas.dydis) {
-  const grybas = new Grybas();
-  //   console.log(grybas);
-
-  if (!grybas.sukirmijes && grybas.valgomas) {
-    krepsiukas.deti(grybas.svoris);
-  }
+while (krepsiukas.deti(new Grybas())) {
+  // console.log(krepsiukas)
 }
-// console.log(krepsiukas.prikrauta);
 
+console.log("krepsiukas", krepsiukas)
 
-//4 (STATIC) Sukurti metodą keleiviuSkaiciusVisuoseTroleibusuose(), kuris rodytų bendrą keleivių skaičių visuose Troleibusas 
-//objektuose. Bendram kelevių skaičiaus skaičiavimui sukurkite statinį metodą bendrasKeleiviuSkaicius(keleiviuSkaicius), 
-//kuris pridėtų arba atimtų keleivius iš statinės savybės visiKeleiviai (kurioje yra įrašytas bendras keleivių skaičius). 
-//Taip pat atitinkamai modifikuokite metodus ilipa(keleiviuSkaicius) ir islipa(keleiviuSkaicius).
+console.log(krepsiukas.prikrauta);
