@@ -276,9 +276,10 @@ class Grybas {
 
 class Krepsys {
   constructor() {
-    this.prikrauta = 0;
     this.dydis = 500;
+    this.prikrauta = 0;
   }
+
   deti(grybas) {
     if (!grybas.sukirmijes && grybas.valgomas) {
       this.prikrauta += grybas.svoris;
@@ -289,9 +290,7 @@ class Krepsys {
 
 const krepsiukas = new Krepsys();
 
-while (krepsiukas.deti(new Grybas())) {
-  // console.log(krepsiukas)
-}
+while (krepsiukas.deti(new Grybas())) {}
 
 console.log("krepsiukas", krepsiukas)
 
