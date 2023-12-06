@@ -131,7 +131,7 @@ class Troleibusas2 {
 
   ilipa(keleiviuSkaicius) {
     this.keleiviuSkaicius += keleiviuSkaicius;
-    Troleibusas2.bendrasKeleiviuSkaicius(keleiviuSkaicius, "+");
+    this.constructor.bendrasKeleiviuSkaicius(keleiviuSkaicius, "+");
   }
   islipa(keleiviuSkaicius) {
     if (keleiviuSkaicius > this.keleiviuSkaicius) {
@@ -139,7 +139,7 @@ class Troleibusas2 {
     } else {
       this.keleiviuSkaicius = this.keleiviuSkaicius - keleiviuSkaicius;
     }
-    Troleibusas2.bendrasKeleiviuSkaicius(keleiviuSkaicius, "-");
+    this.constructor.bendrasKeleiviuSkaicius(keleiviuSkaicius, "-");
   }
   vaziuoja() {
     console.log(
@@ -160,13 +160,7 @@ trulas3.ilipa(2);
 trulas2.islipa(3);
 trulas2.ilipa(12);
 trulas2.vaziuoja();
-Troleibusas2.keleiviuSkaiciusVisuoseTroleibusuose();
-
-//7. (STATIC) Klasėje Kibiras1 (pirmas uždavinys) sukurti metodą akmenuSkaiciusVisuoseKibiruose(),
-//kuris rodytų bendrą visuose kibiruose pririnktų akmenų kiekį (visuose sukurtuose Kibiras objektuose).
-//Skaičiuoti akmenim, kurie buvo surinkti visuose objektuose, naudokite statinę savybę visiAkmenys
-//(kurioje yra įrašytas ir saugomas bendras akmenų skaičius). Taip pat atitinkamai modifikuokite metodus
-//prideti1Akmeni(),  pridetiDaugAkmenu(kiekis).
+this.constructor.keleiviuSkaiciusVisuoseTroleibusuose();
 
 // let visiAkmenys = bendrasAkmenuSkaicius;
 
@@ -216,6 +210,7 @@ Troleibusas2.keleiviuSkaiciusVisuoseTroleibusuose();
 // kiekis netelpa ir būna lygus tūriui. Parašyti metodą ispilti(), kuris grąžiną kiekį. Pilant išpilamas visas kiekis,
 // tas kas netelpa, nuteka per stalo viršų.  Sukurti metodą stiklinejeYra(), kuris į konsolę atspausdintų kiek stiklinėje yra skysčio.
 // Sukurti tris stiklinės objektus su tūriais: 200, 150, 100. Didžiausią pripilti pilną ir tada ją ispilti į mažesnę stiklinę, o mažesnę į dar mažesnę.
+
 console.clear();
 class Stikline {
   constructor(turis) {
